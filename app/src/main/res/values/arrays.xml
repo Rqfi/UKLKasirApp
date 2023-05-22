@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gender_array">
+        <item>Pilih Gender</item>
+        <item>Laki-laki</item>
+        <item>Perempuan</item>
+    </string-array>
+    <string-array name="role_array">
+        <item>Pilih Role</item>
+        <item>Admin</item>
+        <item>Pegawai</item>
+    </string-array>
+    <string-array name="jenis_array">
+        <item>Pilih Jenis Produk</item>
+        <item>Makanan</item>
+        <item>Minuman</item>
+    </string-array>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:clickable="true"
+    android:id="@+id/relative"
+    android:padding="12dp"
+    android:background="@drawable/custom_edittext_cut">
+
+    <TextView
+        android:id="@+id/namaPelangganList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tglList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00 15-05-2023"
+        android:layout_below="@id/namaPelangganList" />
+
+    <TextView
+        android:id="@+id/statusList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Belum Dibayar"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/mejaList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Meja 13"
+        android:layout_below="@id/statusList" />
+
+</RelativeLayout>

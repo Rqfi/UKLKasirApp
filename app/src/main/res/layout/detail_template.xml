@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/custom_edittext_cut"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/namaMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Makan Noh"
+        android:textSize="22sp"/>
+    <TextView
+        android:id="@+id/hargaMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp."
+        android:textSize="22sp"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

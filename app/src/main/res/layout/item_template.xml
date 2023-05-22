@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="4dp"
+    android:background="@drawable/custom_edittext_style"
+    android:padding="12dp"
+    android:layout_marginVertical="10dp">
+
+    <TextView
+        android:id="@+id/namaItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:maxLines="1"/>
+    <TextView
+        android:id="@+id/hargaItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="harga"
+        android:textSize="22sp"
+        android:maxLines="1"
+        android:layout_below="@id/namaItem"/>
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@id/txtJumlah"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:id="@+id/buttonSubstract"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@id/txtJumlah"
+        android:background="@drawable/ic_remove"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/txtJumlah"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toLeftOf="@id/buttonAdd"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:layout_centerVertical="true"/>
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:id="@+id/buttonAdd"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_add"
+        android:layout_centerVertical="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/hargaItem"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
