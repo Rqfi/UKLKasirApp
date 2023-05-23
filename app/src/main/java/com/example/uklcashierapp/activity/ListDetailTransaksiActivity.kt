@@ -27,6 +27,7 @@ class ListDetailTransaksiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_detail_transaksi)
+        supportActionBar?.hide()
 
         btnAdd = findViewById(R.id.btnAddTransaksi)
         recycler = findViewById(R.id.recyclerDetail)

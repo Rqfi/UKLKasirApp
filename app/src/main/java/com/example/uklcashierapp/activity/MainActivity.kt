@@ -16,6 +16,7 @@ import com.example.uklcashierapp.adapter.ItemAdapter
 import com.example.uklcashierapp.database.KasirDatabase
 import com.example.uklcashierapp.database.SwipeGesture
 import com.example.uklcashierapp.entity.Menu
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     lateinit var recyclerMakanan: RecyclerView
@@ -26,10 +27,11 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var db: KasirDatabase
 
-    lateinit var btnAdd: ImageButton
     lateinit var btnMeja: ImageButton
     lateinit var btnTransaksi: ImageButton
     lateinit var btnCheckout: Button
+    lateinit var fabAdd: FloatingActionButton
+    lateinit var btnUser: ImageButton
 
     private var listMakanan = mutableListOf<Menu>()
     private var listMinuman = mutableListOf<Menu>()
@@ -47,10 +49,11 @@ class MainActivity : AppCompatActivity() {
         recyclerMakanan = findViewById(R.id.recyclerMakanan)
         recyclerMinuman = findViewById(R.id.recyclerMinuman)
 
-        btnAdd = findViewById(R.id.btnAdd)
         btnMeja = findViewById(R.id.btnMeja)
         btnTransaksi = findViewById(R.id.btnTransaksi)
         btnCheckout = findViewById(R.id.checkOut)
+        fabAdd = findViewById(R.id.fabAddItem)
+        btnUser = findViewById(R.id.btnUser)
 
         db = KasirDatabase.getInstance(applicationContext)
 
@@ -98,15 +101,19 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, "Logged in as " + nama, Toast.LENGTH_SHORT).show()
 
         if(role != "Admin"){
-            btnAdd.isEnabled = false
-            btnAdd.visibility = View.INVISIBLE
+            fabAdd.isEnabled = false
+            fabAdd.visibility = View.INVISIBLE
+            btnMeja.isEnabled = false
+            btnMeja.visibility = View.INVISIBLE
+            btnUser.isEnabled = false
+            btnUser.visibility = View.INVISIBLE
         }
         if(listCart.size == 0){
             btnCheckout.isEnabled = false
             btnCheckout.visibility = View.INVISIBLE
         }
 
-        btnAdd.setOnClickListener{
+        fabAdd.setOnClickListener{
             val intent = Intent(this@MainActivity, AddItemActivity::class.java)
             startActivity(intent)
         }
@@ -116,6 +123,10 @@ class MainActivity : AppCompatActivity() {
         }
         btnTransaksi.setOnClickListener{
             val intent = Intent(this@MainActivity, ListTransaksiActivity::class.java)
+            startActivity(intent)
+        }
+        btnUser.setOnClickListener{
+            val intent = Intent(this@MainActivity, ListUserActivity::class.java)
             startActivity(intent)
         }
         btnCheckout.setOnClickListener{
@@ -147,34 +158,34 @@ class MainActivity : AppCompatActivity() {
                 val position = viewHolder.adapterPosition
                 val actionBtnTapped = false
 
-                try{
-                    when(direction){
-                        ItemTouchHelper.LEFT -> {
-                            var adapter: ItemAdapter = itemRv.adapter as ItemAdapter
-                            db.kasirDao().deleteMenu(adapter.getItem(position))
-                            adapter.notifyItemRemoved(position)
-                            val intent = intent
-                            finish()
-                            startActivity(intent)
+                    try {
+                        when (direction) {
+                            ItemTouchHelper.LEFT -> {
+                                var adapter: ItemAdapter = itemRv.adapter as ItemAdapter
+                                db.kasirDao().deleteMenu(adapter.getItem(position))
+                                adapter.notifyItemRemoved(position)
+                                val intent = intent
+                                finish()
+                                startActivity(intent)
+                            }
+                            ItemTouchHelper.RIGHT -> {
+                                val moveIntent =
+                                    Intent(this@MainActivity, EditItemActivity::class.java)
+                                var adapter: ItemAdapter = itemRv.adapter as ItemAdapter
+                                var menu = adapter.getItem(position)
+                                moveIntent.putExtra("ID", menu.id_menu)
+                                moveIntent.putExtra("nama_menu", menu.nama_menu)
+                                moveIntent.putExtra("harga_menu", menu.harga)
+                                moveIntent.putExtra("jenis", menu.jenis)
+                                startActivity(moveIntent)
+                            }
                         }
-                        ItemTouchHelper.RIGHT -> {
-                            val moveIntent = Intent(this@MainActivity, EditItemActivity::class.java)
-                            var adapter: ItemAdapter = itemRv.adapter as ItemAdapter
-                            var menu = adapter.getItem(position)
-                            moveIntent.putExtra("ID", menu.id_menu)
-                            moveIntent.putExtra("nama_menu", menu.nama_menu)
-                            moveIntent.putExtra("harga_menu", menu.harga)
-                            moveIntent.putExtra("jenis", menu.jenis)
-                            startActivity(moveIntent)
-                        }
+                    } catch (e: Exception) {
+                        Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
                     }
-                }
-                catch (e: Exception){
-                    Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
-                }
             }
         }
-        val touchHelper = ItemTouchHelper(swipeGesture)
-        touchHelper.attachToRecyclerView(itemRv)
+            val touchHelper = ItemTouchHelper(swipeGesture)
+            touchHelper.attachToRecyclerView(itemRv)
     }
 }

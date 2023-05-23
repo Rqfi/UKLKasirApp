@@ -30,6 +30,7 @@ class CheckoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
+        supportActionBar?.hide()
 
         namaPelanggan = findViewById(R.id.namaPelanggan)
         spinnerMeja = findViewById(R.id.spinnerMeja)

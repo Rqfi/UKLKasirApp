@@ -21,6 +21,18 @@ interface KasirDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(user: User)
 
+    @Query("SELECT * FROM User WHERE id_user = :Id")
+    fun getUser(Id: Int): User
+
+    @Query("SELECT * FROM User")
+    fun getAllUser(): List<User>
+
+    @Delete
+    fun deleteUser(user: User)
+
+    @Query("UPDATE User SET nama = :namaUser, gender = :Gender, alamat = :Address, telepon = :Phone, email = :Email, username = :Username, password = :Password, role = :Role WHERE id_user = :id")
+    fun updateUser(namaUser: String, Gender: String, Address: String, Phone: String, Email: String, Username: String, Password: String, Role: String, id: Int)
+
     @Query("SELECT * FROM User WHERE email = :mEmail AND password = :mPass")
     fun login(mEmail: String, mPass: String): List<User>
 

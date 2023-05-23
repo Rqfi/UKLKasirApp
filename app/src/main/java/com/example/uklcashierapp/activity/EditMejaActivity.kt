@@ -15,10 +15,12 @@ class EditMejaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_meja)
+        supportActionBar?.hide()
 
         inputNama = findViewById(R.id.inputNamaMeja)
         btnSimpan = findViewById(R.id.btnSimpanMeja)
         db = KasirDatabase.getInstance(applicationContext)
+
         var id = intent.getIntExtra("ID", 0)
         btnSimpan.setOnClickListener{
             if(inputNama.text.toString().isNotEmpty()){

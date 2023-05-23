@@ -32,6 +32,7 @@ class AddItemOnDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item_on_detail)
+        supportActionBar?.hide()
 
         recyclerMakanan = findViewById(R.id.recyclerMakanan)
         recyclerMinuman = findViewById(R.id.recyclerMinuman)

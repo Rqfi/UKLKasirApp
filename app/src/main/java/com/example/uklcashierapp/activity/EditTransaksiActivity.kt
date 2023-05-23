@@ -16,6 +16,7 @@ class EditTransaksiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_transaksi)
+        supportActionBar?.hide()
 
         inputNamaPelanggan = findViewById(R.id.namaPelanggan)
         spinnerMeja = findViewById(R.id.spinnerMeja)

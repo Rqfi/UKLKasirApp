@@ -21,6 +21,7 @@ class EditItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_item)
+        supportActionBar?.hide()
 
         id = intent.getIntExtra("ID", 0)
         nama_menu = intent.getStringExtra("nama_menu")!!

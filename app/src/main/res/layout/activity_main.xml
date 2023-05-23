@@ -4,37 +4,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#999999"
-        android:padding="10dp">
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/title_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:textStyle="bold"
+            android:textSize="40dp"/>
+
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_menu"
+            android:text="User"
+            android:textSize="16dp"/>
 
         <ImageButton
             android:id="@+id/btnTransaksi"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/ic_dashboard"
-            android:layout_alignParentRight="true"/>
-
-        <ImageButton
-            android:id="@+id/btnAdd"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_add"
-            android:layout_toLeftOf="@id/btnTransaksi"
+            android:layout_toLeftOf="@id/btnUser"
             android:layout_marginRight="10dp"/>
 
         <ImageButton
             android:id="@+id/btnMeja"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/ic_crop"
-            android:layout_toLeftOf="@id/btnAdd"
+            android:layout_toLeftOf="@id/btnTransaksi"
             android:layout_marginRight="10dp"/>
+
+        <ImageButton
+            android:id="@+id/btnUser"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_profile"
+            android:layout_alignParentRight="true" />
 
     </RelativeLayout>
 
@@ -51,7 +67,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginLeft="16dp"
                 android:text="Makanan"
                 android:textSize="28sp"
@@ -67,7 +83,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginLeft="16dp"
                 android:text="Minuman"
                 android:textSize="28sp"
@@ -88,8 +104,20 @@
         android:id="@+id/checkOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/relative"
+        android:text="checkout ()"
+        android:textSize="12dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddItem"
+        style="@style/CustomFloatingActionButton"
         android:layout_alignParentBottom="true"
-        android:text="checkout ()"/>
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add"/>
 
 </RelativeLayout>

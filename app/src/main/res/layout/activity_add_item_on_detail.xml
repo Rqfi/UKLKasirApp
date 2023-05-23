@@ -18,7 +18,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
                 android:text="Makanan"
                 android:textSize="28sp"
                 android:textStyle="bold"/>
@@ -26,14 +25,12 @@
                 android:id="@+id/recyclerMakanan"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginTop="8dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
                 android:text="Minuman"
                 android:textSize="28sp"
                 android:textStyle="bold"/>
@@ -41,8 +38,7 @@
                 android:id="@+id/recyclerMinuman"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginTop="8dp" />
 
 
         </LinearLayout>
@@ -52,8 +48,7 @@
         android:id="@+id/checkOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:text="checkout ()"/>
 
 </RelativeLayout>

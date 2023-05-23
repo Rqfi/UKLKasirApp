@@ -39,7 +39,14 @@ class TransaksiAdapter(var items: List<Transaksi>): RecyclerView.Adapter<Transak
         holder.textNama.text = items[position].nama_pelanggan
         holder.textTanggal.text = items[position].tgl_transaksi
         holder.textStatus.text = items[position].status
-        holder.textMeja.text = db.kasirDao().getMeja(items[position].id_meja).nomor_meja
+
+        val meja = db.kasirDao().getMeja(items[position].id_meja)
+        if (meja != null) {
+            holder.textMeja.text = meja.nomor_meja
+        } else {
+            holder.textMeja.text = "Unknown Meja"
+        }
+
         holder.relative.setOnClickListener{
             onHolderClick?.invoke(items[position])
         }

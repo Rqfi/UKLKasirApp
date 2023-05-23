@@ -2,16 +2,12 @@ package com.example.uklcashierapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import com.example.uklcashierapp.R
 import com.example.uklcashierapp.database.KasirDatabase
 import com.example.uklcashierapp.entity.User
 
-class RegisterActivity : AppCompatActivity() {
+class EditUserActivity : AppCompatActivity() {
     lateinit var edtName: EditText
     lateinit var selectGender: Spinner
     lateinit var edtAddress: EditText
@@ -25,27 +21,25 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.activity_edit_user)
         supportActionBar?.hide()
 
         initLocalDB()
         setDataSpinner()
+        var id = intent.getIntExtra("ID", 0)
         btnSave.setOnClickListener{
             if(edtName.text.toString().isNotEmpty() && edtAddress.text.toString().isNotEmpty() && edtPhone.text.toString().isNotEmpty() && edtEmail.text.toString().isNotEmpty() && edtUsername.text.toString().isNotEmpty() && edtPassword.text.toString().isNotEmpty()){
-                db.kasirDao().insertUser(
-                    User(
-                        null,
-                        edtName.text.toString(),
-                        selectGender.selectedItem.toString(),
-                        edtAddress.text.toString(),
-                        edtPhone.text.toString(),
-                        edtEmail.text.toString(),
-                        edtUsername.text.toString(),
-                        edtPassword.text.toString(),
-                        selectRole.selectedItem.toString()
-                    )
+                db.kasirDao().updateUser(
+                    edtName.text.toString(),
+                    selectGender.selectedItem.toString(),
+                    edtAddress.text.toString(),
+                    edtPhone.text.toString(),
+                    edtEmail.text.toString(),
+                    edtUsername.text.toString(),
+                    edtPassword.text.toString(),
+                    selectRole.selectedItem.toString(),
+                    id
                 )
-                Toast.makeText(applicationContext, "Register Berhasil", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }

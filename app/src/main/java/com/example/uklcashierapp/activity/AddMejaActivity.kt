@@ -17,6 +17,7 @@ class AddMejaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_meja)
+        supportActionBar?.hide()
 
         inputNama = findViewById(R.id.inputNamaMeja)
         btnSimpanMeja = findViewById(R.id.btnSimpanMeja)

@@ -23,6 +23,7 @@ class ListTransaksiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_transaksi)
+        supportActionBar?.hide()
 
         recycler = findViewById(R.id.recyclerTransaksi)
         db = KasirDatabase.getInstance(applicationContext)
