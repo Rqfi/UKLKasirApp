@@ -12,7 +12,7 @@
         android:theme="@style/Theme.UKLCashierApp"
         tools:targetApi="31">
         <activity
-            android:name=".EditUserActivity"
+            android:name=".activity.EditUserActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ListUserActivity"

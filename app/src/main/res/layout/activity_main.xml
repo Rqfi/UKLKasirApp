@@ -34,15 +34,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/ic_dashboard"
-            android:layout_toLeftOf="@id/btnUser"
-            android:layout_marginRight="10dp"/>
+            android:layout_alignParentRight="true"/>
 
         <ImageButton
             android:id="@+id/btnMeja"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/ic_crop"
-            android:layout_toLeftOf="@id/btnTransaksi"
+            android:layout_toLeftOf="@id/btnUser"
             android:layout_marginRight="10dp"/>
 
         <ImageButton
@@ -50,7 +49,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/ic_profile"
-            android:layout_alignParentRight="true" />
+            android:layout_toLeftOf="@id/btnTransaksi"
+            android:layout_marginRight="10dp" />
 
     </RelativeLayout>
 

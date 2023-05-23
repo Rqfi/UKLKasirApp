@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.*
 import com.example.uklcashierapp.R
 import com.example.uklcashierapp.database.KasirDatabase
-import com.example.uklcashierapp.entity.User
 
 class EditUserActivity : AppCompatActivity() {
     lateinit var edtName: EditText
@@ -26,6 +25,7 @@ class EditUserActivity : AppCompatActivity() {
 
         initLocalDB()
         setDataSpinner()
+
         var id = intent.getIntExtra("ID", 0)
         btnSave.setOnClickListener{
             if(edtName.text.toString().isNotEmpty() && edtAddress.text.toString().isNotEmpty() && edtPhone.text.toString().isNotEmpty() && edtEmail.text.toString().isNotEmpty() && edtUsername.text.toString().isNotEmpty() && edtPassword.text.toString().isNotEmpty()){

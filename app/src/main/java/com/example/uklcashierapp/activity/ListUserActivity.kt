@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uklcashierapp.R
-import com.example.uklcashierapp.adapter.MejaAdapter
 import com.example.uklcashierapp.adapter.UserAdapter
 import com.example.uklcashierapp.database.KasirDatabase
 import com.example.uklcashierapp.database.SwipeGesture
@@ -74,7 +73,7 @@ class ListUserActivity : AppCompatActivity() {
                     }
                 }
                 catch (e: Exception){
-                    Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Error ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }

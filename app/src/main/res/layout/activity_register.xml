@@ -54,24 +54,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/edtPhone"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:layout_below="@id/edtUsername"
+        android:hint="Username" />
 
     <EditText
         android:id="@+id/edtUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/edtEmail"
-        android:hint="Username" />
+        android:layout_below="@id/edtPhone"
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/edtUsername"
+        android:layout_below="@id/edtEmail"
         android:hint="Password"
         android:inputType="textPassword" />
 

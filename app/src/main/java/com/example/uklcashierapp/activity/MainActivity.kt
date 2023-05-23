@@ -92,9 +92,6 @@ class MainActivity : AppCompatActivity() {
         recyclerMinuman.adapter = adapterMinuman
         recyclerMinuman.layoutManager = LinearLayoutManager(this)
 
-        swipeToGesture(recyclerMakanan)
-        swipeToGesture(recyclerMinuman)
-
         nama = intent.getStringExtra("name")!!
         role = intent.getStringExtra("role")!!
         id_user = intent.getIntExtra("id_user", 0)
@@ -107,6 +104,9 @@ class MainActivity : AppCompatActivity() {
             btnMeja.visibility = View.INVISIBLE
             btnUser.isEnabled = false
             btnUser.visibility = View.INVISIBLE
+        } else {
+            swipeToGesture(recyclerMakanan)
+            swipeToGesture(recyclerMinuman)
         }
         if(listCart.size == 0){
             btnCheckout.isEnabled = false
@@ -153,10 +153,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun swipeToGesture(itemRv: RecyclerView){
-        val swipeGesture = object : SwipeGesture(this){
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val actionBtnTapped = false
+        if (role == "Admin") {
+            val swipeGesture = object : SwipeGesture(this) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val position = viewHolder.adapterPosition
+                    val actionBtnTapped = false
 
                     try {
                         when (direction) {
@@ -183,9 +184,10 @@ class MainActivity : AppCompatActivity() {
                     } catch (e: Exception) {
                         Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
                     }
+                }
             }
-        }
             val touchHelper = ItemTouchHelper(swipeGesture)
             touchHelper.attachToRecyclerView(itemRv)
+        }
     }
 }

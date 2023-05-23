@@ -53,6 +53,6 @@ class UserAdapter(var items: List<User>): RecyclerView.Adapter<UserAdapter.ViewH
     }
 
     fun getItem(position: Int): User {
-        return items.get(position)
+        return items[position]
     }
 }
