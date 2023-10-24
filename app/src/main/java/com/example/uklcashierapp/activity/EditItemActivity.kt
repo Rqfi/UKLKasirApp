@@ -30,8 +30,17 @@ class EditItemActivity : AppCompatActivity() {
 
         init()
         setDataSpinner()
+
         nama
         db = KasirDatabase.getInstance(applicationContext)
+
+        // Get item details from the intent
+        id = intent.getIntExtra("ID", 0)
+
+        // Load existing data into UI elements
+        loadExistingData(id)
+
+
 
         simpan.setOnClickListener{
             if(nama.text.toString().isNotEmpty() && harga.text.toString().isNotEmpty() && pilihTipe.selectedItem.toString() != "Pilih tipe item"){
@@ -44,6 +53,31 @@ class EditItemActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun loadExistingData(id: Int) {
+        // Fetch item details from the database based on the ID
+        val menuItem = db.kasirDao().getMenuById(id)
+
+        // Check if menuItem is not null before accessing its properties
+        if (menuItem != null) {
+            // Set existing data to UI elements
+            nama.setText(menuItem.nama_menu ?: "")
+            harga.setText(menuItem.harga?.toString() ?: "")
+
+            // Set the selected item in the Spinner
+            val jenisArray = resources.getStringArray(R.array.jenis_array)
+            val position = jenisArray.indexOf(menuItem.jenis)
+            if (position != -1) {
+                pilihTipe.setSelection(position)
+            }
+        } else {
+            // Handle the case when menuItem is null, for example, show an error message or handle it accordingly
+            Toast.makeText(applicationContext, "Item not found", Toast.LENGTH_SHORT).show()
+            // You might want to finish the activity or take other actions in case of an error
+            finish()
+        }
+    }
+
 
     fun init(){
         nama = findViewById(R.id.namaProduk)

@@ -1,10 +1,14 @@
 package com.example.uklcashierapp.activity
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,10 +26,15 @@ class ListMejaActivity : AppCompatActivity() {
     private var listMeja = mutableListOf<Meja>()
     lateinit var db: KasirDatabase
 
+    var nama: String = ""
+    var role: String = ""
+    var id_user: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_meja)
         supportActionBar?.hide()
+        changestatusbarcolor(R.color.transparent)
 
         recycler = findViewById(R.id.recyclerMeja)
         fabAddMeja = findViewById(R.id.btnAddMeja)
@@ -81,5 +90,12 @@ class ListMejaActivity : AppCompatActivity() {
         }
         val touchHelper = ItemTouchHelper(swipeGesture)
         touchHelper.attachToRecyclerView(itemRv)
+    }
+    private fun changestatusbarcolor(colorResId: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = window
+
+            window.statusBarColor = ContextCompat.getColor(this,colorResId)
+        }
     }
 }

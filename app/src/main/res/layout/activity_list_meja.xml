@@ -6,12 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ListMejaActivity"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/assetslogin1">
 
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_edittext_cut"
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/title_meja"
@@ -19,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Daftar Meja"
             android:textStyle="bold"
-            android:textSize="40dp"/>
+            android:textSize="30dp"/>
 
 
     </RelativeLayout>
@@ -30,7 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/relative"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@drawable/custom_edittext_cut"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddMeja"

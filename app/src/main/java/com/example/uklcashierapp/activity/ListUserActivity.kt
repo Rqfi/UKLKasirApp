@@ -1,9 +1,13 @@
 package com.example.uklcashierapp.activity
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +29,7 @@ class ListUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_user)
         supportActionBar?.hide()
+        changestatusbarcolor(R.color.transparent)
 
         recycler = findViewById(R.id.recyclerUser)
         fabAddUser = findViewById(R.id.fabAddUser)
@@ -34,7 +39,7 @@ class ListUserActivity : AppCompatActivity() {
         recycler.adapter = adapter
         swipeToGesture(recycler)
         fabAddUser.setOnClickListener{
-            val intent = Intent(this@ListUserActivity, RegisterActivity::class.java)
+            val intent = Intent(this@ListUserActivity, AddUserActivity::class.java)
             startActivity(intent)
         }
     }
@@ -79,5 +84,12 @@ class ListUserActivity : AppCompatActivity() {
         }
         val touchHelper = ItemTouchHelper(swipeGesture)
         touchHelper.attachToRecyclerView(itemRv)
+    }
+    private fun changestatusbarcolor(colorResId: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = window
+
+            window.statusBarColor = ContextCompat.getColor(this,colorResId)
+        }
     }
 }

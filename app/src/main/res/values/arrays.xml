@@ -8,7 +8,8 @@
     <string-array name="role_array">
         <item>Pilih Role</item>
         <item>Admin</item>
-        <item>Pegawai</item>
+        <item>Kasir</item>
+        <item>Manajer</item>
     </string-array>
     <string-array name="jenis_array">
         <item>Pilih Jenis Produk</item>

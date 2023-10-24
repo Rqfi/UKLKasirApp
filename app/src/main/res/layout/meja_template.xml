@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/custom_edittext_cut"
-    android:padding="22dp"
+    android:padding="12dp"
     android:layout_marginVertical="16dp">
 
     <TextView
@@ -12,6 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Meja"
-        android:textSize="25sp" />
+        android:textSize="22sp" />
 
 </LinearLayout>

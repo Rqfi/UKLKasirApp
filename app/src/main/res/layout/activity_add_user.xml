@@ -4,41 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="32dp"
-    android:background="@drawable/assetslogin1">
+    android:padding="32dp">
 
-    <RelativeLayout
-        android:id="@+id/registation_title"
+    <TextView
+        android:id="@+id/add_user_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_edittext_cut"
-        android:padding="4dp">
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="24dp"
-            android:layout_height="45dp"
-            android:src="@drawable/ic_back"
-            android:layout_marginLeft="8dp"
-            android:clickable="true"/>
-
-        <TextView
-            android:id="@+id/add_user_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Register"
-            android:textStyle="bold"
-            android:textSize="32dp"
-            android:layout_toRightOf="@id/back" />
-
-    </RelativeLayout>
+        android:text="Tambah User"
+        android:textStyle="bold"
+        android:textSize="32dp" />
 
     <EditText
         android:id="@+id/edtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/registation_title"
+        android:layout_marginTop="24dp"
+        android:layout_below="@id/add_user_title"
         android:hint="Nama"
         android:padding="10dp"
         android:background="@drawable/custom_edittext_cut"/>

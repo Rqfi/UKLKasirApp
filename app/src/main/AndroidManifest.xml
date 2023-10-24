@@ -12,6 +12,9 @@
         android:theme="@style/Theme.UKLCashierApp"
         tools:targetApi="31">
         <activity
+            android:name=".activity.AddUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.EditUserActivity"
             android:exported="false" />
         <activity
@@ -58,6 +61,9 @@
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

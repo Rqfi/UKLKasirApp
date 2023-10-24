@@ -14,6 +14,7 @@ class ItemAdapter(var items: List<Menu>):
 
     var onAddClick: ((Menu) -> Unit)? = null
     var onSubstractClick: ((Menu) -> Unit)? = null
+    var userRole: String = ""
     lateinit var jumlahText: TextView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,6 +24,13 @@ class ItemAdapter(var items: List<Menu>):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val menu = items[position]
+        if (userRole == "Manajer"){
+            holder.addButton.visibility = View.GONE
+            holder.substractButton.visibility = View.GONE
+        } else {
+            holder.addButton.visibility = View.VISIBLE
+            holder.substractButton.visibility = View.VISIBLE
+        }
         holder.txtNamaMenu.text = items[position].nama_menu
         holder.txtHargaMenu.text = "Rp." + items[position].harga
         jumlahText = holder.jumlah

@@ -2,12 +2,15 @@ package com.example.uklcashierapp.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnCheckout: Button
     lateinit var fabAdd: FloatingActionButton
     lateinit var btnUser: ImageButton
+    lateinit var btnLogoff: ImageButton
 
     private var listMakanan = mutableListOf<Menu>()
     private var listMinuman = mutableListOf<Menu>()
@@ -45,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
+        changestatusbarcolor(R.color.transparent)
 
         recyclerMakanan = findViewById(R.id.recyclerMakanan)
         recyclerMinuman = findViewById(R.id.recyclerMinuman)
@@ -54,10 +59,15 @@ class MainActivity : AppCompatActivity() {
         btnCheckout = findViewById(R.id.checkOut)
         fabAdd = findViewById(R.id.fabAddItem)
         btnUser = findViewById(R.id.btnUser)
+        btnLogoff = findViewById(R.id.btnOff)
 
         db = KasirDatabase.getInstance(applicationContext)
 
         adapterMakanan = ItemAdapter(listMakanan)
+        adapterMakanan.userRole = "Admin"
+        adapterMakanan.userRole = "Kasir"
+        recyclerMakanan.adapter = adapterMakanan
+        recyclerMakanan.layoutManager = LinearLayoutManager(this)
         adapterMakanan.onAddClick = {
             listCart.add(it.id_menu)
             btnCheckout.isEnabled = true
@@ -65,6 +75,10 @@ class MainActivity : AppCompatActivity() {
             btnCheckout.text = "Checkout (" + listCart.size + ")"
         }
         adapterMinuman = ItemAdapter(listMinuman)
+        adapterMinuman.userRole = "Admin"
+        adapterMakanan.userRole = "Kasir"
+        recyclerMinuman.adapter = adapterMinuman
+        recyclerMinuman.layoutManager = LinearLayoutManager(this)
         adapterMinuman.onAddClick = {
             listCart.add(it.id_menu)
             btnCheckout.isEnabled = true
@@ -97,14 +111,15 @@ class MainActivity : AppCompatActivity() {
         id_user = intent.getIntExtra("id_user", 0)
         Toast.makeText(applicationContext, "Logged in as " + nama, Toast.LENGTH_SHORT).show()
 
-        if(role != "Admin"){
+        if(role == "Kasir"){
             fabAdd.isEnabled = false
             fabAdd.visibility = View.INVISIBLE
             btnMeja.isEnabled = false
             btnMeja.visibility = View.INVISIBLE
             btnUser.isEnabled = false
             btnUser.visibility = View.INVISIBLE
-        } else {
+        }
+        if(role == "Admin") {
             swipeToGesture(recyclerMakanan)
             swipeToGesture(recyclerMinuman)
         }
@@ -119,6 +134,7 @@ class MainActivity : AppCompatActivity() {
         }
         btnMeja.setOnClickListener{
             val intent = Intent(this@MainActivity, ListMejaActivity::class.java)
+            intent.putExtra("id_user", id_user)
             startActivity(intent)
         }
         btnTransaksi.setOnClickListener{
@@ -133,6 +149,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, CartActivity::class.java)
             intent.putIntegerArrayListExtra("CART", listCart)
             intent.putExtra("id_user", id_user)
+            startActivity(intent)
+        }
+        btnLogoff.setOnClickListener{
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
             startActivity(intent)
         }
     }
@@ -188,6 +208,13 @@ class MainActivity : AppCompatActivity() {
             }
             val touchHelper = ItemTouchHelper(swipeGesture)
             touchHelper.attachToRecyclerView(itemRv)
+        }
+    }
+    private fun changestatusbarcolor(colorResId: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = window
+
+            window.statusBarColor = ContextCompat.getColor(this,colorResId)
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.uklcashierapp.activity
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -71,9 +72,6 @@ class CheckoutActivity : AppCompatActivity() {
                     )
                     )
                 }
-                finish()
-                finish()
-                finish()
             } else {
                 var formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy")
                 var current = LocalDateTime.now().format(formatter)
@@ -101,9 +99,9 @@ class CheckoutActivity : AppCompatActivity() {
                         i.harga
                     ))
                 }
-                finish()
-                finish()
             }
+            val intent = Intent(this@CheckoutActivity, ListTransaksiActivity::class.java)
+            startActivity(intent)
         }
     }
     private fun setDataSpinner(){

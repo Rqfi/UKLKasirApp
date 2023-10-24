@@ -4,8 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="32dp">
+    android:layout_height="match_parent"
+    android:padding="32dp"
+    android:background="@drawable/assetslogin1">
 
     <TextView
         android:id="@+id/login_title"
@@ -19,11 +20,11 @@
     <ImageView
         android:id="@+id/login_img"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="300dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_dashboard"
         android:layout_marginTop="24dp"
-        android:layout_below="@id/login_title"/>
+        android:layout_below="@id/login_title" />
 
     <EditText
         android:id="@+id/edtEmail"
@@ -33,7 +34,8 @@
         android:layout_below="@id/login_img"
         android:hint="Username"
         android:padding="10dp"
-        android:inputType="text" />
+        android:inputType="text"
+        android:background="@drawable/custom_edittext_cut"/>
 
     <EditText
         android:id="@+id/edtPassword"
@@ -43,23 +45,28 @@
         android:layout_below="@id/edtEmail"
         android:hint="Password"
         android:padding="10dp"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:background="@drawable/custom_edittext_cut" />
 
     <Button
         android:id="@+id/login_btn"
-        android:layout_width="120dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edtPassword"
         android:layout_marginTop="20dp"
-        android:text="Login" />
+        android:padding="12dp"
+        android:textSize="16dp"
+        android:text="Login"
+        android:backgroundTint="#FF9800"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/login_btn">
+        android:layout_below="@id/login_btn"
+        android:background="@drawable/custom_edittext_style">
 
         <TextView
             android:id="@+id/register_text"
@@ -75,7 +82,7 @@
             android:layout_toRightOf="@id/register_text"
             android:text="Registrasi di sini"
             android:layout_marginLeft="5dp"
-            android:textColor="@color/purple_500"
+            android:textColor="#FF9800"
             android:textSize="16sp"
             android:clickable="true"/>
 

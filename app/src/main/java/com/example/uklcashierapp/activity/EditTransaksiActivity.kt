@@ -26,25 +26,52 @@ class EditTransaksiActivity : AppCompatActivity() {
         db = KasirDatabase.getInstance(applicationContext)
 
         setDataSpinner()
-        var id_transaksi: Int? = null
-        id_transaksi = intent.getIntExtra("ID", 0)
+
+        // Get the ID of the transaction from the intent
+        val id_transaksi: Int? = intent.getIntExtra("ID", 0)
+
+        // Load existing data into UI elements
+        loadExistingData(id_transaksi)
 
         simpanButton.setOnClickListener{
             var status = "Belum Dibayar"
             if(dibayar.isChecked){
                 status = "Dibayar"
             }
-            if(inputNamaPelanggan.text.toString().isNotEmpty()){
+            if (inputNamaPelanggan.text.toString().isNotEmpty()) {
+                val id_transaksi: Int = intent.getIntExtra("ID", 0) ?: 0
+                val idMeja = db.kasirDao().getIdMejaFromNama(spinnerMeja.selectedItem.toString())
+
                 db.kasirDao().updateTransaksi(
                     inputNamaPelanggan.text.toString(),
-                    db.kasirDao().getIdMejaFromNama(spinnerMeja.selectedItem.toString()),
+                    idMeja,
                     status,
                     id_transaksi
                 )
                 finish()
             }
+
         }
     }
+
+    private fun loadExistingData(id_transaksi: Int?) {
+        if (id_transaksi != null) {
+            val transaksi = db.kasirDao().getTransaksiById(id_transaksi)
+            if (transaksi != null) {
+                // Load existing data into UI elements
+                inputNamaPelanggan.setText(transaksi.nama_pelanggan)
+
+                val idMejaAsString = transaksi.id_meja.toString()
+
+                val mejaIndex = db.kasirDao().getAllNamaMeja().indexOf(idMejaAsString)
+
+                spinnerMeja.setSelection(mejaIndex)
+
+                dibayar.isChecked = transaksi.status == "Dibayar"
+            }
+        }
+    }
+
 
     private fun setDataSpinner(){
         val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, db.kasirDao().getAllNamaMeja())

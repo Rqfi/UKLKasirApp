@@ -5,13 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/assetslogin1">
 
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:padding="12dp"
+        android:background="@drawable/custom_edittext_cut"
+        android:layout_marginBottom="16dp">
 
         <TextView
             android:id="@+id/title_menu"
@@ -30,11 +33,19 @@
             android:textSize="16dp"/>
 
         <ImageButton
+            android:id="@+id/btnOff"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_logoff"
+            android:layout_alignParentRight="true"/>
+
+        <ImageButton
             android:id="@+id/btnTransaksi"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/ic_dashboard"
-            android:layout_alignParentRight="true"/>
+            android:layout_toLeftOf="@id/btnOff"
+            android:layout_marginRight="10dp" />
 
         <ImageButton
             android:id="@+id/btnMeja"
@@ -48,7 +59,7 @@
             android:id="@+id/btnUser"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/ic_profile"
+            android:background="@drawable/ic_user_box"
             android:layout_toLeftOf="@id/btnTransaksi"
             android:layout_marginRight="10dp" />
 
@@ -57,7 +68,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/relative">
+        android:layout_below="@id/relative"
+        android:background="@drawable/custom_edittext_cut"
+        android:paddingVertical="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,7 +80,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
                 android:layout_marginLeft="16dp"
                 android:text="Makanan"
                 android:textSize="28sp"
@@ -83,7 +95,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 android:text="Minuman"
                 android:textSize="28sp"
@@ -94,7 +106,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginHorizontal="16dp"/>
+                android:layout_marginHorizontal="16dp"
+                android:backgroundTint="#FF9800"/>
 
         </LinearLayout>
 
@@ -104,12 +117,14 @@
         android:id="@+id/checkOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_alignParentRight="true"
         android:layout_below="@id/relative"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="6dp"
         android:text="checkout ()"
-        android:textSize="12dp"/>
+        android:textSize="12dp"
+        android:backgroundTint="#FF9800"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddItem"

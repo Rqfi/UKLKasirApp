@@ -48,6 +48,15 @@ interface KasirDao {
     @Query("SELECT * FROM DetailTransaksi WHERE id_transaksi = :idTransaksi")
     fun getDetailTransaksifromTransaksi(idTransaksi: Int): List<DetailTransaksi>
 
+    @Query("SELECT * FROM Transaksi WHERE id_transaksi = :id")
+    fun getTransaksiById(id: Int): Transaksi?
+
+    @Query("SELECT * FROM Menu WHERE id_menu = :id")
+    fun getMenuById(id: Int): Menu?
+
+    @Query("SELECT * FROM Meja WHERE id_meja = :id")
+    fun getMejaById(id: Int): Meja?
+
     @Query("SELECT * FROM Menu WHERE jenis = :jenisMenu")
     fun getMenuFilterJenis(jenisMenu: String): List<Menu>
 
